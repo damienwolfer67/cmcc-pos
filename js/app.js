@@ -252,7 +252,9 @@
       wrap.querySelector('.checkout__label').textContent = 'Manque';
     }
 
-    $('#btn-validate-checkout').disabled = (totalCents === 0) || (changeCents < 0);
+    const disabled = (totalCents === 0) || (changeCents < 0);
+    $('#btn-validate-checkout').disabled = disabled;
+    $('#btn-validate-checkout-desktop').disabled = disabled;
   }
 
   // ---------- Admin ----------
@@ -366,6 +368,14 @@
     });
     $('#btn-cancel-checkout').addEventListener('click', () => showView('pos'));
     $('#btn-validate-checkout').addEventListener('click', () => {
+      cart.clear();
+      checkout.reset();
+      showView('pos');
+      announce('Vente validée. Panier vidé.');
+    });
+    // Boutons desktop (doublons pour layout tablette/desktop)
+    $('#btn-cancel-checkout-desktop').addEventListener('click', () => showView('pos'));
+    $('#btn-validate-checkout-desktop').addEventListener('click', () => {
       cart.clear();
       checkout.reset();
       showView('pos');

@@ -46,14 +46,16 @@
           <span class="checkout__amount" id="checkout-total">0,00 €</span>
         </div>
 
-        <div class="checkout__field">
-          <span class="checkout__label">Montant reçu</span>
-          <output class="checkout__received" id="checkout-received">0,00 €</output>
-        </div>
+        <div class="checkout__row">
+          <div class="checkout__field">
+            <span class="checkout__label">Reçu</span>
+            <output class="checkout__received" id="checkout-received">0,00 €</output>
+          </div>
 
-        <div class="checkout__change" id="checkout-change-wrap">
-          <span class="checkout__label">À rendre</span>
-          <span class="checkout__amount checkout__amount--ok" id="checkout-change">0,00 €</span>
+          <div class="checkout__change" id="checkout-change-wrap">
+            <span class="checkout__label">À rendre</span>
+            <span class="checkout__amount checkout__amount--ok" id="checkout-change">0,00 €</span>
+          </div>
         </div>
 
         <div class="numpad" id="numpad" role="group" aria-label="Clavier numérique">
@@ -69,11 +71,16 @@
           <button type="button" class="numkey numkey--soft" data-key="clear" aria-label="Effacer">C</button>
           <button type="button" class="numkey" data-key="0">0</button>
           <button type="button" class="numkey numkey--soft" data-key="back" aria-label="Retour arrière">⌫</button>
+
+          <!-- Boutons d'action intégrés au clavier sur mobile (CSS les cache sur desktop et les remplace par .checkout__actions) -->
+          <button type="button" class="btn--checkout btn--checkout-cancel" id="btn-cancel-checkout">Annuler</button>
+          <button type="button" class="btn--checkout btn--checkout-valid" id="btn-validate-checkout">Valider</button>
         </div>
 
+        <!-- Actions en dessous du clavier sur desktop uniquement -->
         <div class="checkout__actions">
-          <button type="button" class="btn btn--ghost" id="btn-cancel-checkout">Annuler</button>
-          <button type="button" class="btn btn--primary" id="btn-validate-checkout">Valider</button>
+          <button type="button" class="btn btn--ghost" id="btn-cancel-checkout-desktop">Annuler</button>
+          <button type="button" class="btn btn--primary" id="btn-validate-checkout-desktop">Valider</button>
         </div>
       </div>
     </section>

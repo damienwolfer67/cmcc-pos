@@ -8,6 +8,6 @@
 //     fichiers statiques : aucun setup à faire côté serveur.
 window.CMCC_CONFIG = {
   REMOTE_URL: 'https://damienwolfer67.github.io/cmcc-pos/products.json',
-  CACHE_VERSION: 'cmcc-v2-2026.1',
+  CACHE_VERSION: 'cmcc-v2-2026.1.1',
   DEFAULT_PIN: '1005',
 };
