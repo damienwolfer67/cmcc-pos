@@ -1,0 +1,17 @@
+{
+  "name": "Caisse — Coup de main, coup de cœur",
+  "short_name": "Caisse CMCC",
+  "description": "Point de vente simple et hors ligne pour l'association Coup de main, coup de cœur.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#FFF9F5",
+  "theme_color": "#D7263D",
+  "lang": "fr",
+  "icons": [
+    { "src": "./assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" },
+    { "src": "./assets/logo-cmcc-picto.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

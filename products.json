@@ -1,0 +1,20 @@
+{
+  "version": "2026.1",
+  "currency": "EUR",
+  "categories": [
+    { "id": "boissons", "label": "Boissons" },
+    { "id": "alimentation", "label": "Alimentation" }
+  ],
+  "products": [
+    { "id": "biere", "name": "Bière / panaché", "price": 2.50, "emoji": "🍺", "category": "boissons" },
+    { "id": "picon", "name": "Picon bière", "price": 3.00, "emoji": "🍻", "category": "boissons" },
+    { "id": "soft-eau", "name": "Boisson sans alcool / eau", "price": 1.50, "emoji": "🥤", "category": "boissons" },
+    { "id": "cafe", "name": "Café / tisane", "price": 1.00, "emoji": "☕", "category": "boissons" },
+    { "id": "knack-pdt", "name": "Knack / saucisse / merguez + salade pdt", "price": 5.00, "emoji": "🌭", "category": "alimentation" },
+    { "id": "knack-pain", "name": "Knack / saucisse / merguez + pain", "price": 3.00, "emoji": "🥖", "category": "alimentation" },
+    { "id": "fromage", "name": "Assiette fromage / salades", "price": 5.00, "emoji": "🧀", "category": "alimentation" },
+    { "id": "patisserie", "name": "Pâtisserie", "price": 3.00, "emoji": "🍰", "category": "alimentation" },
+    { "id": "cake", "name": "Gâteau sec / cake", "price": 1.00, "emoji": "🍪", "category": "alimentation" },
+    { "id": "bretzel", "name": "Bretzel", "price": 1.00, "emoji": "🥨", "category": "alimentation" }
+  ]
+}

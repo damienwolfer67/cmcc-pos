@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# JetBrains IDE
+.idea/
+
+# Logs
+*.log
+
+# Local override (au cas où)
+config.local.js
+
+*.pdf

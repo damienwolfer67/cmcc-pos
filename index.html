@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#D7263D" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Caisse CMCC" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./assets/logo-cmcc-picto.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./assets/logo-cmcc-picto.png" />
+  <link rel="stylesheet" href="./css/styles.css" />
+  <title>Caisse — Coup de main, coup de cœur</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="topbar" role="banner">
+    <img src="./assets/logo-cmcc-picto.svg" alt="" class="topbar__logo" />
+    <h1 class="topbar__title">
+      <span class="topbar__title-strong">Caisse CMCC</span>
+      <span class="topbar__title-soft">Coup de main, coup de cœur</span>
+    </h1>
+    <button id="btn-admin" class="iconbtn" type="button" aria-label="Ouvrir l'administration">
+      <span aria-hidden="true">⚙️</span>
+    </button>
+  </header>
+
+  <main id="main">
+
+    <!-- ====================== VUE CAISSE ====================== -->
+    <section id="view-pos" class="view view--pos" aria-label="Caisse">
+      <nav class="cats" id="cats" aria-label="Catégories"></nav>
+      <div class="grid" id="products" role="list" aria-label="Produits"></div>
+      <div class="ariastatus" id="aria-status" aria-live="polite" aria-atomic="true"></div>
+    </section>
+
+    <!-- ====================== VUE PAIEMENT ====================== -->
+    <section id="view-checkout" class="view view--checkout" aria-label="Paiement" hidden>
+      <button class="back" id="btn-back-pos" type="button" aria-label="Retour à la caisse">← Retour</button>
+
+      <div class="checkout">
+        <div class="checkout__total">
+          <span class="checkout__label">Total à payer</span>
+          <span class="checkout__amount" id="checkout-total">0,00 €</span>
+        </div>
+
+        <div class="checkout__field">
+          <span class="checkout__label">Montant reçu</span>
+          <output class="checkout__received" id="checkout-received">0,00 €</output>
+        </div>
+
+        <div class="checkout__change" id="checkout-change-wrap">
+          <span class="checkout__label">À rendre</span>
+          <span class="checkout__amount checkout__amount--ok" id="checkout-change">0,00 €</span>
+        </div>
+
+        <div class="numpad" id="numpad" role="group" aria-label="Clavier numérique">
+          <button type="button" class="numkey" data-key="1">1</button>
+          <button type="button" class="numkey" data-key="2">2</button>
+          <button type="button" class="numkey" data-key="3">3</button>
+          <button type="button" class="numkey" data-key="4">4</button>
+          <button type="button" class="numkey" data-key="5">5</button>
+          <button type="button" class="numkey" data-key="6">6</button>
+          <button type="button" class="numkey" data-key="7">7</button>
+          <button type="button" class="numkey" data-key="8">8</button>
+          <button type="button" class="numkey" data-key="9">9</button>
+          <button type="button" class="numkey numkey--soft" data-key="clear" aria-label="Effacer">C</button>
+          <button type="button" class="numkey" data-key="0">0</button>
+          <button type="button" class="numkey numkey--soft" data-key="back" aria-label="Retour arrière">⌫</button>
+        </div>
+
+        <div class="checkout__actions">
+          <button type="button" class="btn btn--ghost" id="btn-cancel-checkout">Annuler</button>
+          <button type="button" class="btn btn--primary" id="btn-validate-checkout">Valider</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================== VUE ADMIN ====================== -->
+    <section id="view-admin" class="view view--admin" aria-label="Administration" hidden>
+      <button class="back" id="btn-back-admin" type="button">← Retour</button>
+
+      <div class="admin">
+        <div id="admin-locked">
+          <h2>Code d'accès</h2>
+          <p class="muted">Saisis le code à 4 chiffres pour modifier les produits.</p>
+          <div class="pinput" id="pinput" aria-label="Code PIN" role="group">
+            <span class="pindot" data-i="0"></span>
+            <span class="pindot" data-i="1"></span>
+            <span class="pindot" data-i="2"></span>
+            <span class="pindot" data-i="3"></span>
+          </div>
+          <div class="numpad numpad--admin" id="numpad-admin" role="group" aria-label="Clavier code PIN">
+            <button type="button" class="numkey" data-pin="1">1</button>
+            <button type="button" class="numkey" data-pin="2">2</button>
+            <button type="button" class="numkey" data-pin="3">3</button>
+            <button type="button" class="numkey" data-pin="4">4</button>
+            <button type="button" class="numkey" data-pin="5">5</button>
+            <button type="button" class="numkey" data-pin="6">6</button>
+            <button type="button" class="numkey" data-pin="7">7</button>
+            <button type="button" class="numkey" data-pin="8">8</button>
+            <button type="button" class="numkey" data-pin="9">9</button>
+            <button type="button" class="numkey numkey--soft" data-pin="clear">C</button>
+            <button type="button" class="numkey" data-pin="0">0</button>
+            <button type="button" class="numkey numkey--soft" data-pin="back">⌫</button>
+          </div>
+          <p class="pinerror" id="pinerror" role="alert"></p>
+        </div>
+
+        <div id="admin-unlocked" hidden>
+          <h2>Produits</h2>
+          <div class="adminlist" id="adminlist"></div>
+          <button type="button" class="btn btn--ghost" id="btn-add-product">+ Ajouter un produit</button>
+
+          <h2>Préférences</h2>
+          <label class="switch">
+            <input type="checkbox" id="toggle-hc" />
+            <span>Mode haut contraste</span>
+          </label>
+
+          <label class="field">
+            <span>Changer le code PIN (4 chiffres)</span>
+            <input type="password" inputmode="numeric" pattern="\d{4}" maxlength="4" id="new-pin" />
+          </label>
+          <button type="button" class="btn btn--ghost" id="btn-save-pin">Enregistrer le PIN</button>
+
+          <h2>Synchronisation</h2>
+          <p class="muted">Le bouton ci-dessous re-télécharge la liste officielle des produits depuis le serveur et écrase la version locale.</p>
+          <button type="button" class="btn btn--ghost" id="btn-refresh">Réinitialiser depuis le serveur</button>
+          <button type="button" class="btn btn--ghost" id="btn-install" hidden>Installer l'application</button>
+          <p class="muted small" id="version-info"></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================== BARRE PANIER (sticky) ====================== -->
+  <aside class="cartbar" id="cartbar" aria-label="Panier">
+    <button class="cartbar__clear" id="btn-cart-clear" type="button" aria-label="Vider le panier" disabled>
+      <span aria-hidden="true">🗑️</span>
+    </button>
+    <button class="cartbar__toggle" id="btn-cart-toggle" type="button"
+            aria-expanded="false" aria-controls="cartdrawer" aria-label="Afficher le détail du panier">
+      <span class="cartbar__count" id="cart-count">0</span>
+      <span class="cartbar__total" id="cart-total">0,00 €</span>
+      <span class="cartbar__chevron" aria-hidden="true">▴</span>
+    </button>
+    <button class="cartbar__pay" id="btn-pay" type="button" disabled>Encaisser</button>
+  </aside>
+
+  <div class="cartdrawer" id="cartdrawer" hidden aria-label="Détail du panier">
+    <ul class="cartlines" id="cartlines"></ul>
+    <button type="button" class="btn btn--ghost btn--full" id="btn-clear-cart">Vider le panier</button>
+  </div>
+
+  <!-- Modal édition produit -->
+  <dialog id="product-dialog" class="dialog" aria-label="Éditer un produit">
+    <form method="dialog" id="product-form" class="dialog__form">
+      <h2 id="product-dialog-title">Modifier le produit</h2>
+      <label class="field">
+        <span>Nom</span>
+        <input name="name" type="text" required />
+      </label>
+      <label class="field">
+        <span>Prix (€)</span>
+        <input name="price" type="number" step="0.10" min="0" required inputmode="decimal" />
+      </label>
+      <label class="field">
+        <span>Emoji</span>
+        <input name="emoji" type="text" maxlength="4" />
+      </label>
+      <label class="field">
+        <span>Catégorie</span>
+        <select name="category" id="product-category"></select>
+      </label>
+      <input type="hidden" name="id" />
+      <div class="dialog__actions">
+        <button type="button" class="btn btn--ghost" id="btn-delete-product">Supprimer</button>
+        <span class="spacer"></span>
+        <button type="button" class="btn btn--ghost" value="cancel" id="btn-cancel-product">Annuler</button>
+        <button type="submit" class="btn btn--primary" value="save">Enregistrer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="./config.js"></script>
+  <script src="./js/products-data.js"></script>
+  <script src="./js/cart.js"></script>
+  <script src="./js/catalog.js"></script>
+  <script src="./js/checkout.js"></script>
+  <script src="./js/admin.js"></script>
+  <script src="./js/pwa.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>
