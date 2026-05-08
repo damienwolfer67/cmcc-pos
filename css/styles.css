@@ -70,6 +70,10 @@ body {
   padding-bottom: calc(var(--tap) + 80px + var(--safe-bottom));
   overscroll-behavior: none;
   -webkit-tap-highlight-color: transparent;
+  /* Désactive le double-tap-to-zoom et le pinch-zoom (iOS ignore parfois user-scalable=no). */
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
+  -webkit-touch-callout: none;
 }
 
 button, input, select { font: inherit; color: inherit; }

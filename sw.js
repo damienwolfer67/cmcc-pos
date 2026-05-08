@@ -1,7 +1,7 @@
 // sw.js — service worker cache-first pour fonctionnement 100 % hors ligne.
 // Le cache est versionné via CACHE_VERSION ; en cas de bump, on purge l'ancien.
 
-const CACHE_VERSION = 'cmcc-v1-2026.1';
+const CACHE_VERSION = 'cmcc-v2-2026.1';
 const PRECACHE = [
   './',
   './index.html',
