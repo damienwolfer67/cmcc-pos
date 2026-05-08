@@ -1,5 +1,5 @@
 {
-  "version": "2026.1",
+  "version": "2026.1.1",
   "currency": "EUR",
   "categories": [
     { "id": "boissons", "label": "Boissons" },
